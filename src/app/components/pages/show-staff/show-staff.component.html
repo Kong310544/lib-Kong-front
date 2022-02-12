@@ -1,0 +1,56 @@
+<div class="row mt-3">
+    <div class="col-md-12" style="text-align: right;">
+        <a routerLink="/book/new" class="btn btn-success">Add new book</a>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="h1">All Products</div>
+    <div class="col-md-12 mt-2">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>รหัสเจ้าหน้าที่</th>
+                    <th>ชื่อ-สกุล</th>
+                    <th>รหัสผ่าน</th>
+                    <th>ที่อยู่</th>
+                    <th>เบอร์โทรศัพท์</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+
+
+                 <tr *ngFor="let s of staffs">
+                   <td>{{s.staff_id}}</td>
+                   <td>{{s.name}}</td>
+                   <td>{{s.password}}</td>
+                   <td>{{s.address}}</td>
+                   <td>{{s.phoneNumber}}</td>
+                   
+                   
+                   
+                   
+                    <td>
+                        <a class="btn btn-success btn-sm"  routerLink="/staff/nwe" >
+                           
+                            Add
+                        </a> &nbsp;
+                        <a class="btn btn-info btn-sm" >
+                            <!-- routerLink="/product/edit/{{prd._id}}" -->
+                            Edit
+                        </a> &nbsp;
+                        <a class="btn btn-danger btn-sm"  >
+                           
+                            Delete
+                        </a>&nbsp;
+                       
+                    </td>
+                </tr>
+
+
+
+
+            </tbody>
+        </table>
+    </div>
+</div>
