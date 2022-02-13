@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
-import { UserService } from 'src/app/service/user.service';
+import { StaffService } from 'src/app/service/staff.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false ;
   isLoggedIn = false ;
 
-  constructor(private service : UserService, 
+  constructor(private service : StaffService, 
       private router:Router,
       private tokenStorage : TokenStorageService
       ) { 
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true ;
     }else{
         this.loginForm = new FormGroup({
-          email: new FormControl(),
+          staff_id: new FormControl(),
           password :  new FormControl()
         })
 
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   
   doLogin(){
     let login = {
-      email: this.loginForm.value.email,
+      staff_id: this.loginForm.value.staff_id,
       password: this.loginForm.value.password
     };
     this.service.login(login)

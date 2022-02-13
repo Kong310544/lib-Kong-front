@@ -12,43 +12,26 @@ export class StaffService {
   constructor(private http : HttpClient) { }
 
 
-  addBook(book: any){
-    return this.http.post<any>(this.url, book)
-      .pipe(map((res)=>{
-        return res;
-      }));
-  }
 
-  getBook(): any{
-    return this.http.get<any>(this.url);
-  }
 
   getStaff(): any{
     return this.http.get<any>(this.url);
   }
 
-
-
-
-  
-
-  
-  updateBook(book: any ,id : any){
-    let getUrl = `${this.url}/${id}`;
-    return this.http.put<any>(getUrl, book)
-      .pipe(map((res)=>{
+  login(login: any){
+    return this.http.post<any>(`${this.url}/login`, login)
+    .pipe(map((res) => {
         return res;
       }));
-  }
+}
 
-  getBookById(id:any){
-    let getUrl = `${this.url}/${id}`;
-    return this.http.get<any>(getUrl);
-  }
 
-  deleteBook(id:any){
-    let getUrl = `${this.url}/${id}`;
-    return this.http.delete<any>(getUrl) ;
-  }
+  
+
+  
+
+
+
+
   
 }

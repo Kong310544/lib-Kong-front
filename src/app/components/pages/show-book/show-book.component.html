@@ -14,8 +14,6 @@
                     <th>ชื่อผู้แต่ง</th>
                     <th>สำนักพิมพ์</th>
                     <th>ราคา</th>
-                    <th>จำนวนวันที่ยืมได้ นักเรียน</th>
-                    <th>จำนวนวันที่ยืมได้ ครู</th>
                     <th>จัดการ</th>
                 </tr>
             </thead>
@@ -28,8 +26,7 @@
                    <td>{{b.author}}</td>
                    <td>{{b.publisher}}</td>
                    <td>{{b.price}}</td>
-                   <td>{{b.borrowmember}}</td>
-                   <td>{{b.borrowmember}}</td>
+                  
                    
                    
                    
@@ -38,8 +35,8 @@
                            
                             Add
                         </a> &nbsp;
-                        <a class="btn btn-info btn-sm" >
-                            <!-- routerLink="/product/edit/{{prd._id}}" -->
+                        <a class="btn btn-info btn-sm" routerLink="/book/edit/{{b._id}}">
+                            
                             Edit
                         </a> &nbsp;
                         <a class="btn btn-danger btn-sm" (click)="deleteBook(b._id)"  >

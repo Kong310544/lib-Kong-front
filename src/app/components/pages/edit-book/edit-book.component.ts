@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StaffService } from 'src/app/service/staff.service';
+import { BookService } from 'src/app/service/book.service';
 
 @Component({
   selector: 'app-edit-book',
@@ -13,13 +13,13 @@ export class EditBookComponent implements OnInit {
   currentBook: any ;
   bookForm! : FormGroup ;
 
-  constructor(private service : StaffService ,private router : Router, private activatedRouter : ActivatedRoute ) { }
+  constructor(private service : BookService ,private router : Router, private activatedRouter : ActivatedRoute ) { }
 
   ngOnInit(): void {
     this.bookForm = new FormGroup({
-      bookid : new FormControl(),
-      bookname : new FormControl(),
-      bookauther: new FormControl(),
+      book_id : new FormControl(),
+      name : new FormControl(),
+      author: new FormControl(),
       publisher : new FormControl(),
       price : new FormControl(),
     });
@@ -30,9 +30,9 @@ export class EditBookComponent implements OnInit {
 
     this.service.getBookById(this.id).subscribe((res)=>{
       this.currentBook = res.data;
-      this.bookForm.controls['bookid'].setValue(this.currentBook.bookid);
-      this.bookForm.controls['bookname'].setValue(this.currentBook.bookname);
-      this.bookForm.controls['bookauther'].setValue(this.currentBook.bookauther);
+      this.bookForm.controls['book_id'].setValue(this.currentBook.book_id);
+      this.bookForm.controls['name'].setValue(this.currentBook.name);
+      this.bookForm.controls['author'].setValue(this.currentBook.author);
       this.bookForm.controls['publisher'].setValue(this.currentBook.publisher);
       this.bookForm.controls['price'].setValue(this.currentBook.price);
       
@@ -42,11 +42,11 @@ export class EditBookComponent implements OnInit {
 
   updateBook(){
     let book = {
-      bookid: this.bookForm.value.bookid,
-      bookname: this.bookForm.value.name,
-      bookauther:this.bookForm.value.bookauther,
-      publisher: this.bookForm.value.publisher,
-      price: this.bookForm.value.price
+      book_id: this.bookForm.value.book_id,
+      name: this.bookForm.value.name,
+      author:this.bookForm.value.author,
+      publisher:this.bookForm.value.publisher,
+      price:this.bookForm.value.price
     }
 
     this.service.updateBook(book, this.id).subscribe((res)=>{
@@ -54,5 +54,7 @@ export class EditBookComponent implements OnInit {
       this.router.navigate(["/book"]);
     })
 }
+
+
 
 }

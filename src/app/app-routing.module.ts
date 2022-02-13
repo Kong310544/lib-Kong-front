@@ -8,6 +8,7 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { AuthGuard } from './guard/auth.guard';
 import { AddBookComponent } from './components/pages/add-book/add-book.component';
 import { ShowBookComponent } from './components/pages/show-book/show-book.component';
+import { EditBookComponent } from './components/pages/edit-book/edit-book.component';
 
 const routes: Routes = [
     { path: "", component: MainComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
     { path: "login", component: LoginComponent },
     { path: "book/new", component: AddBookComponent ,canActivate : [AuthGuard]},
     { path: "book", component:  ShowBookComponent,canActivate : [AuthGuard]},
+    { path: "book/edit/:id", component:  EditBookComponent,canActivate : [AuthGuard]},
 ];
 
 @NgModule({

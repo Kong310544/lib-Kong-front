@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { StaffService } from 'src/app/service/staff.service';
+import { BookService } from 'src/app/service/book.service';
 
 @Component({
   selector: 'app-show-book',
@@ -9,7 +9,7 @@ import { StaffService } from 'src/app/service/staff.service';
 })
 export class ShowBookComponent implements OnInit {
  books:any;
-  constructor(private service : StaffService , private router : Router) { }
+  constructor(private service : BookService , private router : Router) { }
 
   ngOnInit(): void {
     this.service.getBook().subscribe((res)=>{
